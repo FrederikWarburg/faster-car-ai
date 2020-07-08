@@ -56,6 +56,7 @@ def main():
         delta_y = CENTER_Y - y
         turn_angle = int(float(CAMERA_X_ANGLE) / SCREEN_WIDTH * delta_x)
 
+        global pan_angle
         pan_angle += turn_angle
 
         sleep(0.01)
@@ -74,6 +75,14 @@ def main():
                 if rear_wheels_enable:
                     bw.speed = motor_speed
                     bw.forward()
+        else:
+            bw.speed = motor_speed
+            bw.forward()
+
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        bw.stop()
+        img.release()
