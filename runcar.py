@@ -38,21 +38,21 @@ front_wheels_enable = True
 motor_speed = 60
 
 def find_line():
-	return CENTER_X, CENTER_Y
+    return CENTER_X, CENTER_Y
 
 def main():
-	print("Let's roll!")
+    print("Let's roll!")
 
-	while True:
-		# init pos
-		x = 0
-		y = 0
+    while True:
+        # init pos
+        x = 0
+        y = 0
 
-		# Find line posistion
-		x, y = find_line()
+        # Find line posistion
+        x, y = find_line()
 
-		# Drive 
-		delta_x = CENTER_X - x
+        # Drive 
+        delta_x = CENTER_X - x
         delta_y = CENTER_Y - y
         turn_angle = int(float(CAMERA_X_ANGLE) / SCREEN_WIDTH * delta_x)
 
@@ -74,3 +74,6 @@ def main():
                 if rear_wheels_enable:
                     bw.speed = motor_speed
                     bw.forward()
+
+if __name__ == "__main__":
+    main()
